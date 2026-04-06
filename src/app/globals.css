@@ -1,26 +1,39 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --surface-0: #0A0A0F;
+  --surface-1: #111118;
+  --surface-2: #1A1A24;
+  --surface-3: #22222F;
+  --accent:    #6C63FF;
+  --border:    #2A2A3A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface-0);
+  color: #E8E8F0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
+
+/* Scrollbar — dark DAW style */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-1); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3A3A4F; }
+
+/* Beat cell active flash */
+.beat-flash { animation: flash 0.08s ease-out; }
+@keyframes flash {
+  0%   { background: #6C63FF; }
+  100% { background: inherit; }
+}
+
+/* Frequency bar */
+.freq-bar { transform-origin: bottom; transition: transform 0.05s ease-out; }
